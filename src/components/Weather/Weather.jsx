@@ -10,11 +10,12 @@ const Weather = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${param}&APPID=67fb04cabf5a308535b5575c50870e72`
+        `https://api.openweathermap.org/data/2.5/weather?q=${param}&APPID=${
+          import.meta.env.VITE_REACT_APP_API_KEY
+        }`
       );
 
       const data = await response.json();
-      console.log(data, "data");
 
       if (data) {
         setWeatherData(data);
@@ -42,8 +43,6 @@ const Weather = () => {
   useEffect(() => {
     fetchDataWeather("bengaluru");
   }, []);
-
-  console.log(weatherData);
 
   return (
     <>
